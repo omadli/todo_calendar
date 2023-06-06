@@ -1,3 +1,4 @@
+import email
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -8,7 +9,7 @@ from accounts.forms import SignInForm
 class SignInView(View):
     """ User registration view """
 
-    template_name = "accounts/signin.html"
+    template_name = "accounts/signin2.html"
     form_class = SignInForm
 
     def get(self, request, *args, **kwargs):
@@ -25,5 +26,10 @@ class SignInView(View):
             if user:
                 login(request, user)
                 return redirect("calendarapp:calendar")
+            else:
+                print("User not found")
+        else:
+            print("form invalid")
+            print(forms.errors)
         context = {"form": forms}
         return render(request, self.template_name, context)

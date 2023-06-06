@@ -7,7 +7,7 @@ from accounts.forms import SignUpForm
 class SignUpView(View):
     """ User registration view """
 
-    template_name = "accounts/signup.html"
+    template_name = "accounts/register.html"
     form_class = SignUpForm
 
     def get(self, request, *args, **kwargs):
@@ -20,5 +20,8 @@ class SignUpView(View):
         if forms.is_valid():
             forms.save()
             return redirect("accounts:signin")
+        else:
+            print("Form invalid!")
+            print(forms.errors)
         context = {"form": forms}
         return render(request, self.template_name, context)
