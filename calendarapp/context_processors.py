@@ -14,4 +14,8 @@ def event_renderer(request: HttpRequest):
                 end_time__lte=(datetime.now().date() + timedelta(days=5)),
             ).order_by("end_time") 
         }
+    else:
+        return {
+            'my_events': []
+        }
     
