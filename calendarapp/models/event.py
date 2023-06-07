@@ -44,3 +44,19 @@ class Event(EventAbstract):
     def get_html_url(self):
         url = reverse("calendarapp:event-detail", args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+    
+    @property
+    def due_days(self):
+        due_to = self.end_time - datetime.now()
+        return due_to.days
+
+    @property
+    def due_time(self):
+        if self.due_days == 0:
+            due = self.end_time - datetime.now()
+            hours = due.seconds // 3600
+            if hours == 0:
+                return "less than 1 hour"
+            return f"{hours} hours"
+        return f"{self.due_days} days"
+    
