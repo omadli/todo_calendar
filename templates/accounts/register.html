@@ -37,6 +37,22 @@
 					<span class="login100-form-title">Registration</span>
 
 					<div class="wrap-input100 validate-input">
+						{{ form.first_name }}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						{{ form.last_name }}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
 						{{ form.email }}
 						{% comment %} <input class="input100" type="text" name="email" placeholder="Email"> {% endcomment %}
 						<span class="focus-input100"></span>

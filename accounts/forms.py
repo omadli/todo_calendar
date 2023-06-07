@@ -27,8 +27,12 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["email"]
-        widgets = {"email": forms.EmailInput(attrs={"class": "input100", "placeholder": "Email"})}
+        fields = ["first_name", "last_name", "email"]
+        widgets = {
+            "first_name": forms.TextInput(attrs={"class": "input100", "required": "true", "placeholder": "First name"}),
+            "last_name": forms.TextInput(attrs={"class": "input100", "placeholder": "Last name"}),
+            "email": forms.EmailInput(attrs={"class": "input100", "placeholder": "Email"}),
+        }
 
     def clean_email(self):
         email = self.cleaned_data["email"]
